@@ -65,7 +65,7 @@
       见证单位：四川鼎立建设项目管理有限公司<br>
       见 证 人：何焱<br>
       报告结论：依据标准GB/T50621-2010对上述构件进行检验，检验结果满足设计要求，检测合格。<br>
-      验证时间：2025-08-14 15:01:46
+      验证时间<span id="verifyTime"></span>
     </td>
   </tr>
   <tr class="center">
@@ -75,6 +75,23 @@
     <td>技术支持：宜昌维通科技有限公司</td>
   </tr>
 </table>
+  <script>
+  function updateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('verifyTime').textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
+
+  // 页面加载后立即更新时间
+  updateTime();
+
+</script>
 </body>
 </html>
+
 
