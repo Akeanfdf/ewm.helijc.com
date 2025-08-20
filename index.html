@@ -69,15 +69,16 @@
 <script>
   // 解析URL参数
   const params = new URLSearchParams(window.location.search);
+
   const unit   = params.get("unit")   || "广汉市三星堆文旅发展有限公司";
   const project= params.get("project")|| "三星堆古蜀文化遗址博物馆及附属设施施工工程";
   const date   = params.get("date")   || "未知日期";
   const event= params.get("event")||"未知项目"
   const id     = params.get("id")     || "未知报告编号";
   const check  = params.get("check")  || "未知检验编号";
-    const company= params.get("company")|| "四川鼎立建设项目管理有限公司";
-  const person = params.get("person") || "何焱";
-  const result = params.get("result") || "依据标准GB/T50621-2010对上述构件进行检验，检验结果满足设计要求，检验合格。";
+  const company= params.get("company")|| "四川鼎立建设项目管理有限公司";
+  const person = params.get("person") || "辛红建";
+  const result = params.get("result") || "GB/T50621-2010";
 
   // 当前时间作为验证时间
   const now = new Date().toLocaleString();
@@ -93,10 +94,9 @@
     检验编号：${check}<br>
     见证单位：${company}<br>
     见 证 人：${person}<br>
-    报告结论：${result}<br>
+    报告结论：依据标准${result}对上述构件进行检验，检验结果满足设计要求，检验合格。<br>
     验证时间：${now}
   `;
 </script>
 </body>
 </html>
-
