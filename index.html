@@ -21,7 +21,7 @@
       /* 点阵背景 */
       background-image:
               radial-gradient(circle, #ccc 1px, transparent 1px);
-      background-size: 20px 20px; /* 点间距 */
+      background-size: 20px 20px;
     }
 
     td {
@@ -54,18 +54,8 @@
     <td>报告验证</td>
   </tr>
   <tr class="left">
-    <td>
-      验证成功<br>
-      委托单位：广汉市三星堆文旅发展有限公司<br>
-      工程项目：三星堆古蜀文化遗址博物馆及附属设施工程<br>
-      委托日期：2022-09-06<br>
-      检测项目：涂层厚度fm<br>
-      报告编号：禾(I29)2200028<br>
-      检验编号：I29-2200028<br>
-      见证单位：四川鼎立建设项目管理有限公司<br>
-      见 证 人：何焱<br>
-      报告结论：依据标准GB/T50621-2010对上述构件进行检验，检验结果满足设计要求，检测合格。<br>
-      验证时间<span id="verifyTime"></span>
+    <td id="report-content">
+      正在加载报告信息...
     </td>
   </tr>
   <tr class="center">
@@ -75,23 +65,38 @@
     <td>技术支持：宜昌维通科技有限公司</td>
   </tr>
 </table>
-  <script>
-  function updateTime() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    document.getElementById('verifyTime').textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  }
 
-  // 页面加载后立即更新时间
-  updateTime();
+<script>
+  // 解析URL参数
+  const params = new URLSearchParams(window.location.search);
 
+  const unit   = params.get("unit")   || "广汉市三星堆文旅发展有限公司";
+  const project= params.get("project")|| "三星堆古蜀文化遗址博物馆及附属设施施工工程";
+  const date   = params.get("date")   || "未知日期";
+  const event= params.get("event")||"未知项目"
+  const id     = params.get("id")     || "未知报告编号";
+  const check  = params.get("check")  || "未知检验编号";
+  const company= params.get("company")|| "未知见证单位";
+  const person = params.get("person") || "未知见证人";
+  const result = params.get("result") || "无结论";
+
+  // 当前时间作为验证时间
+  const now = new Date().toLocaleString();
+
+  // 填充内容
+  document.getElementById("report-content").innerHTML = `
+    验证成功<br>
+    委托单位：${unit}<br>
+    工程项目：${project}<br>
+    委托日期：${date}<br>
+    检测项目：${event}<br>
+    报告编号：${id}<br>
+    检验编号：${check}<br>
+    见证单位：${company}<br>
+    见 证 人：${person}<br>
+    报告结论：${result}<br>
+    验证时间：${now}
+  `;
 </script>
 </body>
 </html>
-
-
